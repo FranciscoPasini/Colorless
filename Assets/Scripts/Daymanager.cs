@@ -14,15 +14,18 @@ public class DayManager : MonoBehaviour
     public bool transicionSuave = true;
     public float velocidadTransicion = 0.3f;
 
+    [Header("Iluminacion")]
+    public LightManager lightingManager;
+
     private readonly float[] saturacionPorDia = new float[]
     {
         1.0f,
-        0.85f, 
+        0.85f,
         0.65f,
         0.45f,
         0.30f,
         0.15f,
-        0.0f  
+        0.0f
     };
 
     private float saturacionActual = 1f;
@@ -37,6 +40,9 @@ public class DayManager : MonoBehaviour
 
     private void Start()
     {
+        if (lightingManager == null)
+            lightingManager = FindObjectOfType<LightManager>();
+
         BuscarObjetos();
         AplicarDia(diaActual);
     }
@@ -45,25 +51,21 @@ public class DayManager : MonoBehaviour
     {
         objetosEnEscena.Clear();
         ObjectColor[] todos = FindObjectsOfType<ObjectColor>();
-
         foreach (ObjectColor obj in todos)
         {
             if (obj.CompareTag("WorkObject")) continue;
             objetosEnEscena.Add(obj);
         }
-
         Debug.Log($"COLORLESS: {objetosEnEscena.Count} objetos registrados.");
     }
 
     private void Update()
     {
         if (!transicionSuave) return;
-
         if (!Mathf.Approximately(saturacionActual, saturacionObjetivo))
         {
             saturacionActual = Mathf.MoveTowards(
                 saturacionActual, saturacionObjetivo, velocidadTransicion * Time.deltaTime);
-
             AplicarSaturacionATodos(saturacionActual);
         }
     }
@@ -78,14 +80,14 @@ public class DayManager : MonoBehaviour
 
         diaActual++;
         AplicarDia(diaActual);
-        Debug.Log($"COLORLESS: Día {diaActual} Saturación: {saturacionObjetivo}");
+        lightingManager?.IniciarDia(); // reinicia la hora a las 7:00am
+        Debug.Log($"COLORLESS: Día {diaActual} — Saturación: {saturacionObjetivo}");
     }
 
     private void AplicarDia(int dia)
     {
         int index = Mathf.Clamp(dia - 1, 0, saturacionPorDia.Length - 1);
         saturacionObjetivo = saturacionPorDia[index];
-
         if (!transicionSuave)
         {
             saturacionActual = saturacionObjetivo;
@@ -110,5 +112,6 @@ public class DayManager : MonoBehaviour
     {
         diaActual = 1;
         AplicarDia(1);
+        lightingManager?.IniciarDia();
     }
 }

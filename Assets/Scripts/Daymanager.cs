@@ -72,6 +72,7 @@ public class DayManager : MonoBehaviour
 
     public void AvanzarDia()
     {
+        Debug.Log("¡EL GATILLO FUNCIONA Y LLAMÓ A LA FUNCIÓN!");
         if (diaActual >= diasMaximos)
         {
             Debug.Log("COLORLESS: Último día.");

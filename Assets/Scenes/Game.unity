@@ -1491,7 +1491,7 @@ MonoBehaviour:
   requestRecordAudioPermissionOnStartup: 0
   requestPassthroughCameraAccessPermissionOnStartup: 0
   _localDimming: 1
-  _trackingOriginType: 1
+  _trackingOriginType: 0
   usePositionTracking: 1
   useRotationTracking: 1
   useIPDInPositionTracking: 1
@@ -1545,15 +1545,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 272193979}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.19, y: -3.48, z: 0}
+  m_LocalRotation: {x: 0, y: 0.0148347085, z: 0, w: 0.99988997}
+  m_LocalPosition: {x: 4.19, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2036103495}
   - {fileID: 669050595}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 1.7, z: 0}
 --- !u!143 &272193985
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2335,6 +2335,7 @@ GameObject:
   m_Component:
   - component: {fileID: 370687140}
   - component: {fileID: 370687139}
+  - component: {fileID: 370687141}
   m_Layer: 0
   m_Name: DayManager
   m_TagString: Untagged
@@ -2359,6 +2360,7 @@ MonoBehaviour:
   transicionSuave: 1
   velocidadTransicion: 0.3
   lightingManager: {fileID: 705507996}
+  horaMinDormir: 22
 --- !u!4 &370687140
 Transform:
   m_ObjectHideFlags: 0
@@ -2374,6 +2376,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &370687141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370687138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96d640abc7d697b4f8510c4f8c55de26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &380379318
 GameObject:
   m_ObjectHideFlags: 0
@@ -14929,7 +14943,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 370687139}
         m_TargetAssemblyTypeName: DayManager, Assembly-CSharp
-        m_MethodName: AvanzarDia
+        m_MethodName: TrySleep
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14994,13 +15008,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 602c3fc025312ff4da775943079534c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hintLabel: Interactuar
+  hintLabel: Dormir
   onInteract:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 370687139}
         m_TargetAssemblyTypeName: DayManager, Assembly-CSharp
-        m_MethodName: AvanzarDia
+        m_MethodName: TrySleep
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17796,6 +17810,7 @@ GameObject:
   - component: {fileID: 1946266854}
   - component: {fileID: 1946266853}
   - component: {fileID: 1946266855}
+  - component: {fileID: 1946266856}
   m_Layer: 0
   m_Name: CenterEyeAnchor
   m_TagString: MainCamera
@@ -17892,6 +17907,22 @@ MonoBehaviour:
   interactRange: 3
   interactKey: 101
   hintText: {fileID: 0}
+--- !u!114 &1946266856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946266851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df8e1d778abf442e4bec449c360e9e1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeTime: 2
+  fadeColor: {r: 0.01, g: 0.01, b: 0.01, a: 1}
+  fadeOnStart: 1
+  renderQueue: 5000
 --- !u!1 &1953866201
 GameObject:
   m_ObjectHideFlags: 0

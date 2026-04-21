@@ -1,7 +1,8 @@
-using UnityEngine;
-using System.Collections.Generic;
+  using UnityEngine;
+  using System.Collections;
+  using System.Collections.Generic;
 
-public class DayManager : MonoBehaviour
+  public class DayManager : MonoBehaviour
 {
     public static DayManager Instance { get; private set; }
 
@@ -17,20 +18,20 @@ public class DayManager : MonoBehaviour
     [Header("Iluminacion")]
     public LightManager lightingManager;
 
+    [Header("Hora de dormir")]
+    [Tooltip("A partir de qué hora se puede dormir")]
+    public float horaMinDormir = 22f;
+
     private readonly float[] saturacionPorDia = new float[]
     {
-        1.0f,
-        0.85f,
-        0.65f,
-        0.45f,
-        0.30f,
-        0.15f,
-        0.0f
+          1.0f, 0.85f, 0.65f, 0.45f, 0.30f, 0.15f, 0.0f
     };
 
     private float saturacionActual = 1f;
     private float saturacionObjetivo = 1f;
     private List<ObjectColor> objetosEnEscena = new List<ObjectColor>();
+    private bool durmiendo = false;
+    private float ultimaHora = 0f;
 
     private void Awake()
     {
@@ -41,7 +42,7 @@ public class DayManager : MonoBehaviour
     private void Start()
     {
         if (lightingManager == null)
-            lightingManager = FindObjectOfType<LightManager>();
+            lightingManager = FindFirstObjectByType<LightManager>();
 
         BuscarObjetos();
         AplicarDia(diaActual);
@@ -50,7 +51,7 @@ public class DayManager : MonoBehaviour
     private void BuscarObjetos()
     {
         objetosEnEscena.Clear();
-        ObjectColor[] todos = FindObjectsOfType<ObjectColor>();
+        ObjectColor[] todos = FindObjectsByType<ObjectColor>(FindObjectsSortMode.None);
         foreach (ObjectColor obj in todos)
         {
             if (obj.CompareTag("WorkObject")) continue;
@@ -61,18 +62,63 @@ public class DayManager : MonoBehaviour
 
     private void Update()
     {
-        if (!transicionSuave) return;
+        if (!transicionSuave || durmiendo) return;
+
         if (!Mathf.Approximately(saturacionActual, saturacionObjetivo))
         {
             saturacionActual = Mathf.MoveTowards(
                 saturacionActual, saturacionObjetivo, velocidadTransicion * Time.deltaTime);
             AplicarSaturacionATodos(saturacionActual);
         }
+
+        DetectarMedianoche();
     }
 
-    public void AvanzarDia()
+    private void DetectarMedianoche()
     {
-        Debug.Log("¡EL GATILLO FUNCIONA Y LLAMÓ A LA FUNCIÓN!");
+        if (lightingManager == null || durmiendo) return;
+
+        float horaActual = lightingManager.horaActual;
+
+        // Detecta cuando el reloj pasa de ~23.9 a ~0 (vuelta a medianoche)
+        if (ultimaHora > 22f && horaActual < 1f)
+            StartCoroutine(TransicionSueno());
+
+        ultimaHora = horaActual;
+    }
+
+    public void TrySleep()
+    {
+        if (durmiendo) return;
+
+        if (lightingManager != null && lightingManager.horaActual < horaMinDormir)
+        {
+            Debug.Log($"COLORLESS: Todavía no es hora de dormir. Hora: {lightingManager.horaActual:F1}");
+            return;
+        }
+
+        StartCoroutine(TransicionSueno());
+    }
+
+    private IEnumerator TransicionSueno()
+    {
+        durmiendo = true;
+
+        if (ScreenFade.Instance != null)
+            yield return StartCoroutine(ScreenFade.Instance.FadeOut());
+
+        AvanzarDia();
+
+        yield return new WaitForSeconds(1f);
+
+        if (ScreenFade.Instance != null)
+            yield return StartCoroutine(ScreenFade.Instance.FadeIn());
+
+        durmiendo = false;
+    }
+
+    private void AvanzarDia()
+    {
         if (diaActual >= diasMaximos)
         {
             Debug.Log("COLORLESS: Último día.");
@@ -81,7 +127,7 @@ public class DayManager : MonoBehaviour
 
         diaActual++;
         AplicarDia(diaActual);
-        lightingManager?.IniciarDia(); // reinicia la hora a las 7:00am
+        lightingManager?.IniciarDia();
         Debug.Log($"COLORLESS: Día {diaActual} — Saturación: {saturacionObjetivo}");
     }
 

@@ -1491,7 +1491,7 @@ MonoBehaviour:
   requestRecordAudioPermissionOnStartup: 0
   requestPassthroughCameraAccessPermissionOnStartup: 0
   _localDimming: 1
-  _trackingOriginType: 0
+  _trackingOriginType: 1
   usePositionTracking: 1
   useRotationTracking: 1
   useIPDInPositionTracking: 1
@@ -2700,6 +2700,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2241306379690224349, guid: f27cf5f1f149bb94a8bd71f3cf084f11, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1417415848}
+    - targetCorrespondingSourceObject: {fileID: 2241306379690224349, guid: f27cf5f1f149bb94a8bd71f3cf084f11, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1417415857}
     - targetCorrespondingSourceObject: {fileID: 2318095069259823847, guid: f27cf5f1f149bb94a8bd71f3cf084f11, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2117459489}
@@ -11215,7 +11218,7 @@ GameObject:
   - component: {fileID: 727935124}
   m_Layer: 0
   m_Name: LeftEyeAnchor
-  m_TagString: MainCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14962,7 +14965,7 @@ MonoBehaviour:
   _maxSelectingInteractors: -1
   _data: {fileID: 0}
   _pointableElement: {fileID: 0}
-  _surface: {fileID: 1079885996}
+  _surface: {fileID: 1417415853}
   _selectSurface: {fileID: 0}
   _movementProvider: {fileID: 0}
   _tiebreakerScore: 0
@@ -14979,6 +14982,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _collider: {fileID: 1417415847}
+--- !u!114 &1417415857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 384513492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602c3fc025312ff4da775943079534c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hintLabel: Interactuar
+  onInteract:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 370687139}
+        m_TargetAssemblyTypeName: DayManager, Assembly-CSharp
+        m_MethodName: AvanzarDia
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1442932345
 GameObject:
   m_ObjectHideFlags: 0
@@ -17764,6 +17795,7 @@ GameObject:
   - component: {fileID: 1946266852}
   - component: {fileID: 1946266854}
   - component: {fileID: 1946266853}
+  - component: {fileID: 1946266855}
   m_Layer: 0
   m_Name: CenterEyeAnchor
   m_TagString: MainCamera
@@ -17845,6 +17877,21 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1946266851}
   m_Enabled: 1
+--- !u!114 &1946266855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946266851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e73089dabf8419247a4fdb72adca746d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactRange: 3
+  interactKey: 101
+  hintText: {fileID: 0}
 --- !u!1 &1953866201
 GameObject:
   m_ObjectHideFlags: 0

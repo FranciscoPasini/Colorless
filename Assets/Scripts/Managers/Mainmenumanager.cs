@@ -8,7 +8,29 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class MainMenuManager : MonoBehaviour
 {
-    [Header("Nombre de la escena de juego")]
+    public GameObject lightScene;
+    public GameObject house;
+    public GameObject canvas1;
+    public GameObject daymanager;
+    public GameObject clock;
+    public GameObject activitymanager;
+    public GameObject canvas2;
+
+    public void PlayButton()
+    {
+        lightScene.SetActive(true);
+        house.SetActive(true);
+        canvas1.SetActive(true);
+        daymanager.SetActive(true);
+        clock.SetActive(true);
+        activitymanager.SetActive(true);
+
+        canvas2.SetActive(false);
+    }
+}
+
+/*
+ *     [Header("Nombre de la escena de juego")]
     [Tooltip("Debe coincidir exactamente con el nombre en Build Settings")]
     public string nombreEscenaJuego = "Game";
 
@@ -80,4 +102,4 @@ public class MainMenuManager : MonoBehaviour
         }
         canvasGroup.alpha = 0f;
     }
-}
+ */

@@ -15,7 +15,7 @@ public class DayManager : MonoBehaviour
     public LightManager lightingManager;
 
     [Header("Hora de dormir")]
-    [Tooltip("A partir de qué hora se puede dormir")]
+    [Tooltip("A partir de quï¿½ hora se puede dormir")]
     public float horaMinDormir = 22f;
 
     private List<ObjectColor> objetosEnEscena = new List<ObjectColor>();
@@ -69,7 +69,7 @@ public class DayManager : MonoBehaviour
         if (durmiendo) return;
         if (lightingManager != null && lightingManager.horaActual < horaMinDormir)
         {
-            Debug.Log($"COLORLESS: Todavía no es hora de dormir. Hora: {lightingManager.horaActual:F1}");
+            Debug.Log($"COLORLESS: Todavï¿½a no es hora de dormir. Hora: {lightingManager.horaActual:F1}");
             return;
         }
         StartCoroutine(TransicionSueno());
@@ -91,13 +91,14 @@ public class DayManager : MonoBehaviour
     {
         if (diaActual >= diasMaximos)
         {
-            Debug.Log("COLORLESS: Último día.");
+            Debug.Log("COLORLESS: ï¿½ltimo dï¿½a.");
             return;
         }
         diaActual++;
         AplicarDia(diaActual);
         lightingManager?.IniciarDia();
-        Debug.Log($"COLORLESS: Día {diaActual}");
+        ActivityManager.Instance?.IniciarDia(diaActual);
+        Debug.Log($"COLORLESS: Dï¿½a {diaActual}");
     }
 
     private void AplicarDia(int dia)
@@ -109,10 +110,10 @@ public class DayManager : MonoBehaviour
         }
     }
 
-    [ContextMenu("Avanzar Día (Test)")]
+    [ContextMenu("Avanzar Dï¿½a (Test)")]
     private void TestAvanzar() => AvanzarDia();
 
-    [ContextMenu("Resetear al Día 1 (Test)")]
+    [ContextMenu("Resetear al Dï¿½a 1 (Test)")]
     private void TestReset()
     {
         diaActual = 1;

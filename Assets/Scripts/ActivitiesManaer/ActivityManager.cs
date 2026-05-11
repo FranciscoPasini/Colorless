@@ -37,12 +37,12 @@ public class ActivityManager : MonoBehaviour
         int indice = dia - 1;
         if (indice < 0 || indice >= dias.Count)
         {
-            Debug.LogWarning($"COLORLESS: No hay DayData para el día {dia}.");
+            Debug.LogWarning($"COLORLESS: No hay DayData para el dï¿½a {dia}.");
             return;
         }
         pasoActual = 0;
         diaActual = dias[indice];
-        Debug.Log($"COLORLESS: ActivityManager iniciando día {dia} con {diaActual.pasos.Count} pasos.");
+        Debug.Log($"COLORLESS: ActivityManager iniciando dï¿½a {dia} con {diaActual.pasos.Count} pasos.");
         EjecutarPasoActual();
     }
 
@@ -52,8 +52,8 @@ public class ActivityManager : MonoBehaviour
 
         pasoEnCurso = diaActual.pasos[pasoActual];
 
-        if (!string.IsNullOrEmpty(pasoEnCurso.pensamiento))
-            ThoughtDisplay.Instance?.MostrarPensamiento(pasoEnCurso.pensamiento, alTerminar: ActivarPaso);
+        if (!string.IsNullOrEmpty(pasoEnCurso.pensamiento) && ThoughtDisplay.Instance != null)
+            ThoughtDisplay.Instance.MostrarPensamiento(pasoEnCurso.pensamiento, alTerminar: ActivarPaso);
         else
             ActivarPaso();
     }
@@ -115,7 +115,7 @@ public class ActivityManager : MonoBehaviour
         GameObject go = GameObject.Find(nombre);
         if (go == null)
         {
-            Debug.LogWarning($"COLORLESS: No se encontró el GameObject '{nombre}' en la escena.");
+            Debug.LogWarning($"COLORLESS: No se encontrï¿½ el GameObject '{nombre}' en la escena.");
             return null;
         }
         return go.GetComponent<Interactable>();

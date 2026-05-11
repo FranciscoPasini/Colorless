@@ -13,7 +13,15 @@ MonoBehaviour:
   m_Name: Day1
   m_EditorClassIdentifier: 
   pasos:
-  - pensamiento: Bueno, voy a prepararme el desayuno...
+  - pensamiento: Tengo que comer algo...
     nombreInteractable: bowl
-    avanzarHoraA: -1
+    avanzarHoraA: 9
     esDormir: 0
+  - pensamiento: Bueno tengo que ponerme a trabajar ahora...
+    nombreInteractable: book.05
+    avanzarHoraA: 22
+    esDormir: 0
+  - pensamiento: Bueno ya es tarde, tengo que dormir...
+    nombreInteractable: "yellow accord\xE9on"
+    avanzarHoraA: -1
+    esDormir: 1

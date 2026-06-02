@@ -2567,7 +2567,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3353196584141528348, guid: f27cf5f1f149bb94a8bd71f3cf084f11, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3480322650264823906, guid: f27cf5f1f149bb94a8bd71f3cf084f11, type: 3}
       propertyPath: m_CastShadows
@@ -3674,7 +3674,7 @@ Transform:
   m_GameObject: {fileID: 591935893}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.306, z: 0}
+  m_LocalPosition: {x: 0, y: 11.11, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:

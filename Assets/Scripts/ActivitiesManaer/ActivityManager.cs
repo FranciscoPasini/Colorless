@@ -37,12 +37,12 @@ public class ActivityManager : MonoBehaviour
         int indice = dia - 1;
         if (indice < 0 || indice >= dias.Count)
         {
-            Debug.LogWarning($"COLORLESS: No hay DayData para el d�a {dia}.");
+            Debug.LogWarning($"COLORLESS: No hay DayData para el día {dia}.");
             return;
         }
         pasoActual = 0;
         diaActual = dias[indice];
-        Debug.Log($"COLORLESS: ActivityManager iniciando d�a {dia} con {diaActual.pasos.Count} pasos.");
+        Debug.Log($"COLORLESS: ActivityManager iniciando día {dia} con {diaActual.pasos.Count} pasos.");
         EjecutarPasoActual();
     }
 
@@ -60,6 +60,12 @@ public class ActivityManager : MonoBehaviour
 
     private void ActivarPaso()
     {
+        if (pasoEnCurso.esDecision)
+        {
+            ActivarDecision();
+            return;
+        }
+
         interactableActivo = BuscarInteractable(pasoEnCurso.nombreInteractable);
         esperandoInteraccion = interactableActivo != null;
 
@@ -72,6 +78,41 @@ public class ActivityManager : MonoBehaviour
         {
             StartCoroutine(CompletarPaso());
         }
+    }
+
+    private void ActivarDecision()
+    {
+        GameObject go1 = BuscarIncluyendoInactivos(pasoEnCurso.opcion1Nombre);
+        GameObject go2 = BuscarIncluyendoInactivos(pasoEnCurso.opcion2Nombre);
+
+        if (go1 == null || go2 == null)
+        {
+            Debug.LogWarning($"COLORLESS: No se encontraron los objetos de decisión '{pasoEnCurso.opcion1Nombre}' o '{pasoEnCurso.opcion2Nombre}'.");
+  
+            StartCoroutine(CompletarPaso());
+            return;
+        }
+
+        DecisionController.Instance.Activar(go1.transform, go2.transform, OnDecisionHecha);
+    }
+
+    private GameObject BuscarIncluyendoInactivos(string nombre)
+    {
+        foreach (GameObject go in Resources.FindObjectsOfTypeAll<GameObject>())
+        {
+            if (go.name == nombre && go.scene.isLoaded)
+                return go;
+        }
+        return null;
+    }
+
+    private void OnDecisionHecha(int indice)
+    {
+        string elegida = indice == 0 ? pasoEnCurso.opcion1Nombre : pasoEnCurso.opcion2Nombre;
+        Debug.Log($"COLORLESS: Jugador eligió opción {indice + 1}: {elegida}");
+
+        DecisionController.Instance.Desactivar();
+        StartCoroutine(CompletarPaso());
     }
 
     private void OnInteractuado()
@@ -115,7 +156,7 @@ public class ActivityManager : MonoBehaviour
         GameObject go = GameObject.Find(nombre);
         if (go == null)
         {
-            Debug.LogWarning($"COLORLESS: No se encontr� el GameObject '{nombre}' en la escena.");
+            Debug.LogWarning($"COLORLESS: No se encontró el GameObject '{nombre}' en la escena.");
             return null;
         }
         return go.GetComponent<Interactable>();

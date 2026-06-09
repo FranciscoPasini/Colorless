@@ -14,14 +14,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pasos:
   - pensamiento: Tengo que comer algo...
-    nombreInteractable: bowl
-    avanzarHoraA: 9
+    nombreInteractable: cabnet
+    avanzarHoraA: -1
     esDormir: 0
-  - pensamiento: Bueno tengo que ponerme a trabajar ahora...
+    esDecision: 0
+    opcion1Nombre: 
+    opcion2Nombre: 
+  - pensamiento: 
+    nombreInteractable: 
+    avanzarHoraA: -1
+    esDormir: 0
+    esDecision: 1
+    opcion1Nombre: ComidaSana
+    opcion2Nombre: ComidaChatarra
+  - pensamiento: Listo, deberia  ponerme a trabajar ahora...
     nombreInteractable: book.05
     avanzarHoraA: 22
     esDormir: 0
+    esDecision: 0
+    opcion1Nombre: 
+    opcion2Nombre: 
   - pensamiento: Bueno ya es tarde, tengo que dormir...
     nombreInteractable: "yellow accord\xE9on"
     avanzarHoraA: -1
     esDormir: 1
+    esDecision: 0
+    opcion1Nombre: 
+    opcion2Nombre: 

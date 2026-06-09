@@ -17,4 +17,11 @@ public class ActivityStep
 
     [Header("Flags")]
     public bool esDormir = false;
+
+    [Header("Decision (dejar vacio si no es decision)")]
+    public bool esDecision = false;
+    [Tooltip("Nombre exacto del GameObject opcion 1 en la escena (ej: Hamburguesa)")]
+    public string opcion1Nombre;
+    [Tooltip("Nombre exacto del GameObject opcion 2 en la escena (ej: PolloEnsalada)")]
+    public string opcion2Nombre;
 }

@@ -12,37 +12,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc11fbfb6b2002c4ba08b4913545f80a, type: 3}
   m_Name: Day6
   m_EditorClassIdentifier: 
-  eventoAlIniciar: 
+  eventoAlIniciar: Palpitar
   pasos:
-  - pensamiento: Por dios, no doy mas es un asco esta casa y este trabajo...
+  - pensamiento: Me quiero morir...
     nombreInteractable: cabnet
     avanzarHoraA: -1
     esDormir: 0
     esDecision: 0
     opcion1Nombre: 
     opcion2Nombre: 
+    opcion1Evento: 
+    opcion2Evento: 
+    opcionBloqueadaNombre: 
+    pensamientoBloqueada: 
     eventoAlCompletar: 
-  - pensamiento: No tengo ganas de cocinar nada...
+  - pensamiento: ...
     nombreInteractable: 
-    avanzarHoraA: 9
+    avanzarHoraA: 11
     esDormir: 0
     esDecision: 1
     opcion1Nombre: ComidaSana
     opcion2Nombre: ComidaChatarra
+    opcion1Evento: 
+    opcion2Evento: 
+    opcionBloqueadaNombre: ComidaSana
+    pensamientoBloqueada: No hay forma...
     eventoAlCompletar: 
-  - pensamiento: Bueno, a ver con que sufro hoy...
+  - pensamiento: Ojala todo terminara...
     nombreInteractable: book.05
-    avanzarHoraA: 0
+    avanzarHoraA: 3
     esDormir: 0
     esDecision: 0
     opcion1Nombre: 
     opcion2Nombre: 
+    opcion1Evento: 
+    opcion2Evento: 
+    opcionBloqueadaNombre: 
+    pensamientoBloqueada: 
     eventoAlCompletar: 
-  - pensamiento: Bueno, a ver con que sufro hoy...
+  - pensamiento: No doy mas...
     nombreInteractable: "yellow accord\xE9on"
     avanzarHoraA: -1
     esDormir: 1
     esDecision: 0
     opcion1Nombre: 
     opcion2Nombre: 
+    opcion1Evento: 
+    opcion2Evento: 
+    opcionBloqueadaNombre: 
+    pensamientoBloqueada: 
     eventoAlCompletar: 

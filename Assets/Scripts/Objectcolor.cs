@@ -58,6 +58,12 @@
         }
     }
 
+    /// <summary>Devuelve el color a full de forma gradual (Dia 7 - Salida). Usa velocidadTransicion.</summary>
+    public void Restaurar()
+    {
+        saturacionObjetivo = 1f;
+    }
+
     public void AplicarSaturacion(float saturacion)
     {
         if (rend == null) rend = GetComponent<Renderer>();

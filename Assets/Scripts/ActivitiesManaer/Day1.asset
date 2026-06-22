@@ -21,6 +21,10 @@ MonoBehaviour:
     esDecision: 0
     opcion1Nombre: 
     opcion2Nombre: 
+    opcion1Evento: 
+    opcion2Evento: 
+    opcionBloqueadaNombre: 
+    pensamientoBloqueada: 
     eventoAlCompletar: 
   - pensamiento: Mmm, cual elijo?
     nombreInteractable: 
@@ -29,6 +33,10 @@ MonoBehaviour:
     esDecision: 1
     opcion1Nombre: ComidaSana
     opcion2Nombre: ComidaChatarra
+    opcion1Evento: 
+    opcion2Evento: 
+    opcionBloqueadaNombre: ComidaChatarra
+    pensamientoBloqueada: No, mejor vamos a comer algo sano para el primer dia.
     eventoAlCompletar: 
   - pensamiento: Listo, deberia  ponerme a trabajar ahora...
     nombreInteractable: book.05
@@ -37,6 +45,10 @@ MonoBehaviour:
     esDecision: 0
     opcion1Nombre: 
     opcion2Nombre: 
+    opcion1Evento: 
+    opcion2Evento: 
+    opcionBloqueadaNombre: 
+    pensamientoBloqueada: 
     eventoAlCompletar: Enfoque
   - pensamiento: Bueno ya es tarde, tengo que dormir...
     nombreInteractable: "yellow accord\xE9on"
@@ -45,4 +57,8 @@ MonoBehaviour:
     esDecision: 0
     opcion1Nombre: 
     opcion2Nombre: 
+    opcion1Evento: 
+    opcion2Evento: 
+    opcionBloqueadaNombre: 
+    pensamientoBloqueada: 
     eventoAlCompletar: 

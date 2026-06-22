@@ -120,6 +120,14 @@ public class DayManager : MonoBehaviour
         ClutterManager.Instance?.AplicarDia(dia);
     }
 
+    /// <summary>Devuelve el color a todos los objetos registrados de forma gradual (Dia 7 - Salida).</summary>
+    public void RestaurarColor()
+    {
+        foreach (ObjectColor obj in objetosEnEscena)
+            if (obj != null) obj.Restaurar();
+        Debug.Log("COLORLESS: Restaurando color (Salida).");
+    }
+
     [ContextMenu("Avanzar D�a (Test)")]
     private void TestAvanzar() => AvanzarDia();
 

@@ -30,6 +30,8 @@ public class VignetteEffect : MonoBehaviour
     private Transform quad;
     private float intensidadActual;
     private float intensidadObjetivo;
+    private float radioActual;
+    private float radioObjetivo;
 
     private void Start()
     {
@@ -60,6 +62,8 @@ public class VignetteEffect : MonoBehaviour
         float ancho = alto * Mathf.Max(camara.aspect, 1f);
         quad.localScale = new Vector3(ancho * margen, alto * margen, 1f);
 
+        radioActual = radioObjetivo = radio;
+
         instancia = new Material(shader);
         instancia.SetColor("_Color", color);
         instancia.SetFloat("_Radio", radio);
@@ -77,17 +81,35 @@ public class VignetteEffect : MonoBehaviour
         intensidadObjetivo = Mathf.Clamp01(valor);
     }
 
+    /// <summary>Setea el radio objetivo (mas chico = mas cerrada / tunel). Para el stack del Dia 5.</summary>
+    public void SetRadio(float valor)
+    {
+        radioObjetivo = Mathf.Clamp01(valor);
+    }
+
     private void Update()
     {
-        if (Mathf.Approximately(intensidadActual, intensidadObjetivo)) return;
-        intensidadActual = Mathf.MoveTowards(intensidadActual, intensidadObjetivo, velocidad * Time.deltaTime);
-        Aplicar(intensidadActual);
+        bool cambia = false;
+
+        if (!Mathf.Approximately(intensidadActual, intensidadObjetivo))
+        {
+            intensidadActual = Mathf.MoveTowards(intensidadActual, intensidadObjetivo, velocidad * Time.deltaTime);
+            cambia = true;
+        }
+        if (!Mathf.Approximately(radioActual, radioObjetivo))
+        {
+            radioActual = Mathf.MoveTowards(radioActual, radioObjetivo, velocidad * Time.deltaTime);
+            cambia = true;
+        }
+
+        if (cambia) Aplicar(intensidadActual);
     }
 
     private void Aplicar(float v)
     {
         if (instancia == null) return;
         instancia.SetFloat("_Intensidad", v);
+        instancia.SetFloat("_Radio", radioActual);
         if (quad != null) quad.gameObject.SetActive(v > 0.001f);
     }
 }

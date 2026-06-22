@@ -92,12 +92,27 @@ public class ActivityManager : MonoBehaviour
         if (go1 == null || go2 == null)
         {
             Debug.LogWarning($"COLORLESS: No se encontraron los objetos de decisión '{pasoEnCurso.opcion1Nombre}' o '{pasoEnCurso.opcion2Nombre}'.");
-  
+
             StartCoroutine(CompletarPaso());
             return;
         }
 
-        DecisionController.Instance.Activar(go1.transform, go2.transform, OnDecisionHecha);
+        Transform bloqueada = null;
+        if (!string.IsNullOrEmpty(pasoEnCurso.opcionBloqueadaNombre))
+        {
+            GameObject goBloq = BuscarIncluyendoInactivos(pasoEnCurso.opcionBloqueadaNombre);
+            if (goBloq != null) bloqueada = goBloq.transform;
+            else Debug.LogWarning($"COLORLESS: No se encontró la opción bloqueada '{pasoEnCurso.opcionBloqueadaNombre}'.");
+        }
+
+        DecisionController.Instance.Activar(go1.transform, go2.transform, OnDecisionHecha,
+                                           bloqueada, OnIntentoBloqueada);
+    }
+
+    private void OnIntentoBloqueada()
+    {
+        if (!string.IsNullOrEmpty(pasoEnCurso.pensamientoBloqueada) && ThoughtDisplay.Instance != null)
+            ThoughtDisplay.Instance.MostrarPensamiento(pasoEnCurso.pensamientoBloqueada);
     }
 
     private GameObject BuscarIncluyendoInactivos(string nombre)
@@ -114,6 +129,10 @@ public class ActivityManager : MonoBehaviour
     {
         string elegida = indice == 0 ? pasoEnCurso.opcion1Nombre : pasoEnCurso.opcion2Nombre;
         Debug.Log($"COLORLESS: Jugador eligió opción {indice + 1}: {elegida}");
+
+        string eventoOpcion = indice == 0 ? pasoEnCurso.opcion1Evento : pasoEnCurso.opcion2Evento;
+        if (!string.IsNullOrEmpty(eventoOpcion))
+            SymptomManager.Instance?.Disparar(eventoOpcion);
 
         DecisionController.Instance.Desactivar();
         StartCoroutine(CompletarPaso());

@@ -55,6 +55,12 @@ public class TirednessAudio : MonoBehaviour
         if (rutinaBost != null) { StopCoroutine(rutinaBost); rutinaBost = null; }
     }
 
+    /// <summary>Cambia el volumen de los proximos sonidos (0..1). Para el stack del Dia 5.</summary>
+    public void SetVolumen(float v)
+    {
+        volumen = Mathf.Clamp01(v);
+    }
+
     private IEnumerator Loop(System.Func<AudioClip> clip, float min, float max)
     {
         while (true)

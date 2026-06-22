@@ -15,8 +15,10 @@ public class DayManager : MonoBehaviour
     public LightManager lightingManager;
 
     [Header("Hora de dormir")]
-    [Tooltip("A partir de qu� hora se puede dormir")]
+    [Tooltip("A partir de qu� hora se puede dormir (noche)")]
     public float horaMinDormir = 22f;
+    [Tooltip("Hasta qu� hora de la madrugada sigue siendo v�lido dormir (la ventana cruza la medianoche)")]
+    public float horaMaxDormir = 7f;
 
     private List<ObjectColor> objetosEnEscena = new List<ObjectColor>();
     private bool durmiendo = false;
@@ -67,12 +69,18 @@ public class DayManager : MonoBehaviour
     public void TrySleep()
     {
         if (durmiendo) return;
-        if (lightingManager != null && lightingManager.horaActual < horaMinDormir)
+        if (lightingManager != null && !EsHoraDeDormir(lightingManager.horaActual))
         {
             Debug.Log($"COLORLESS: Todav�a no es hora de dormir. Hora: {lightingManager.horaActual:F1}");
             return;
         }
         StartCoroutine(TransicionSueno());
+    }
+
+    // Ventana nocturna que cruza la medianoche: desde horaMinDormir (ej 22) hasta horaMaxDormir (ej 7).
+    private bool EsHoraDeDormir(float hora)
+    {
+        return hora >= horaMinDormir || hora < horaMaxDormir;
     }
 
     private IEnumerator TransicionSueno()
@@ -108,6 +116,8 @@ public class DayManager : MonoBehaviour
             if (obj != null)
                 obj.ActualizarParaDia(dia);
         }
+
+        ClutterManager.Instance?.AplicarDia(dia);
     }
 
     [ContextMenu("Avanzar D�a (Test)")]

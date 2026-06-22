@@ -12,8 +12,6 @@ public class ScreenFade : MonoBehaviour
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
         ovrFade = FindFirstObjectByType<OVRScreenFade>();
-        if (ovrFade == null)
-            Debug.LogWarning("COLORLESS: No se encontró OVRScreenFade en la escena.");
     }
 
     public IEnumerator FadeOut()

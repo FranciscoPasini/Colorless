@@ -6,18 +6,16 @@ public class DayManager : MonoBehaviour
 {
     public static DayManager Instance { get; private set; }
 
-    [Header("Dias")]
+    [Header("Days")]
     [Range(1, 7)]
     public int diaActual = 1;
     public int diasMaximos = 7;
 
-    [Header("Iluminacion")]
+    [Header("Lighting")]
     public LightManager lightingManager;
 
-    [Header("Hora de dormir")]
-    [Tooltip("A partir de qu� hora se puede dormir (noche)")]
+    [Header("Sleep time")]
     public float horaMinDormir = 22f;
-    [Tooltip("Hasta qu� hora de la madrugada sigue siendo v�lido dormir (la ventana cruza la medianoche)")]
     public float horaMaxDormir = 7f;
 
     private List<ObjectColor> objetosEnEscena = new List<ObjectColor>();
@@ -48,7 +46,6 @@ public class DayManager : MonoBehaviour
             if (obj.CompareTag("WorkObject")) continue;
             objetosEnEscena.Add(obj);
         }
-        Debug.Log($"COLORLESS: {objetosEnEscena.Count} objetos registrados.");
     }
 
     private void Update()
@@ -70,14 +67,10 @@ public class DayManager : MonoBehaviour
     {
         if (durmiendo) return;
         if (lightingManager != null && !EsHoraDeDormir(lightingManager.horaActual))
-        {
-            Debug.Log($"COLORLESS: Todav�a no es hora de dormir. Hora: {lightingManager.horaActual:F1}");
             return;
-        }
         StartCoroutine(TransicionSueno());
     }
 
-    // Ventana nocturna que cruza la medianoche: desde horaMinDormir (ej 22) hasta horaMaxDormir (ej 7).
     private bool EsHoraDeDormir(float hora)
     {
         return hora >= horaMinDormir || hora < horaMaxDormir;
@@ -98,15 +91,11 @@ public class DayManager : MonoBehaviour
     private void AvanzarDia()
     {
         if (diaActual >= diasMaximos)
-        {
-            Debug.Log("COLORLESS: �ltimo d�a.");
             return;
-        }
         diaActual++;
         AplicarDia(diaActual);
         lightingManager?.IniciarDia();
         ActivityManager.Instance?.IniciarDia(diaActual);
-        Debug.Log($"COLORLESS: D�a {diaActual}");
     }
 
     private void AplicarDia(int dia)
@@ -120,18 +109,16 @@ public class DayManager : MonoBehaviour
         ClutterManager.Instance?.AplicarDia(dia);
     }
 
-    /// <summary>Devuelve el color a todos los objetos registrados de forma gradual (Dia 7 - Salida).</summary>
     public void RestaurarColor()
     {
         foreach (ObjectColor obj in objetosEnEscena)
             if (obj != null) obj.Restaurar();
-        Debug.Log("COLORLESS: Restaurando color (Salida).");
     }
 
-    [ContextMenu("Avanzar D�a (Test)")]
+    [ContextMenu("Advance Day (Test)")]
     private void TestAvanzar() => AvanzarDia();
 
-    [ContextMenu("Resetear al D�a 1 (Test)")]
+    [ContextMenu("Reset to Day 1 (Test)")]
     private void TestReset()
     {
         diaActual = 1;

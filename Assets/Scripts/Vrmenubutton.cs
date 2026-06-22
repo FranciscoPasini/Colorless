@@ -3,24 +3,20 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-/// <summary>
-/// Botón minimalista para VR. Maneja hover y click con feedback visual sutil.
-/// Requiere: Image en el mismo GameObject, OVRInputModule en el EventSystem.
-/// </summary>
 [RequireComponent(typeof(Button))]
 public class VRMenuButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-    [Header("Colores (paleta monocromática)")]
-    public Color colorNormal = new Color(1f, 1f, 1f, 0f);   // transparente
-    public Color colorHover = new Color(1f, 1f, 1f, 0.08f); // blanco muy sutil
+    [Header("Colors (monochrome palette)")]
+    public Color colorNormal = new Color(1f, 1f, 1f, 0f);
+    public Color colorHover = new Color(1f, 1f, 1f, 0.08f);
     public Color colorClick = new Color(1f, 1f, 1f, 0.18f);
 
-    [Header("Texto del botón")]
+    [Header("Button text")]
     public TMPro.TMP_Text label;
     public Color textoNormal = new Color(0.85f, 0.85f, 0.85f, 1f);
     public Color textoHover = Color.white;
 
-    [Header("Animación")]
+    [Header("Animation")]
     public float velocidadTransicion = 8f;
 
     private Image bg;
@@ -33,7 +29,6 @@ public class VRMenuButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         bg = GetComponent<Image>();
         btn = GetComponent<Button>();
 
-        // Deshabilitar transición nativa de Unity (usamos la nuestra)
         btn.transition = Selectable.Transition.None;
 
         bgObjetivo = colorNormal;

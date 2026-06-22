@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-
 public class ClockUI : MonoBehaviour
 {
-    [Header("Referencias")]
+    [Header("References")]
     public TextMeshProUGUI textHora;
     public TextMeshProUGUI textDia;
     public LightManager lightingManager;
@@ -23,6 +22,6 @@ public class ClockUI : MonoBehaviour
             textHora.text = $"{h:D2}:{m:D2}";
 
         if (textDia != null && DayManager.Instance != null)
-            textDia.text = $"Día {DayManager.Instance.diaActual}";
+            textDia.text = $"Day {DayManager.Instance.diaActual}";
     }
 }

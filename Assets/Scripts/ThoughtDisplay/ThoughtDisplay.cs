@@ -8,9 +8,8 @@ public class ThoughtDisplay : MonoBehaviour
 {
     public static ThoughtDisplay Instance { get; private set; }
 
-    [Header("Referencia")]
+    [Header("Reference")]
     [SerializeField] private TMP_Text textoDisplay;
-    [Tooltip("Panel/canvas a mostrar mientras hay texto. Si se deja vacio se usa el GameObject del textoDisplay. NO debe ser este mismo GameObject.")]
     [SerializeField] private GameObject panel;
 
     [Header("Config")]
@@ -35,11 +34,7 @@ public class ThoughtDisplay : MonoBehaviour
 
     public void MostrarPensamiento(string texto, Action alTerminar = null, float ocultarDespuesDe = -1f)
     {
-        if (textoDisplay == null)
-        {
-            Debug.LogWarning("COLORLESS: ThoughtDisplay no tiene textoDisplay asignado.");
-            return;
-        }
+        if (textoDisplay == null) return;
         if (coroutineActual != null) StopCoroutine(coroutineActual);
         SetVisible(true);
         float delay = ocultarDespuesDe >= 0f ? ocultarDespuesDe : tiempoAutoOcultar;
@@ -71,6 +66,6 @@ public class ThoughtDisplay : MonoBehaviour
         coroutineActual = null;
     }
 
-    [ContextMenu("TEST - Mostrar pensamiento")]
-    private void TestMostrar() => MostrarPensamiento("Voy a prepararme el desayuno...");
+    [ContextMenu("TEST - Show thought")]
+    private void TestMostrar() => MostrarPensamiento("I'm going to make breakfast...");
 }

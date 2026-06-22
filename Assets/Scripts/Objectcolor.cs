@@ -1,11 +1,10 @@
-  using UnityEngine;
+using UnityEngine;
 
-  public class ObjectColor : MonoBehaviour
+public class ObjectColor : MonoBehaviour
 {
-    [Tooltip("Color individual de este objeto")]
     public Color colorPropio = Color.white;
 
-    [Header("Control de color")]
+    [Header("Color control")]
     public bool pierdeColor = true;
     [Range(1, 7)] public int diaInicio = 1;
     [Range(1, 7)] public int diaFinal = 7;
@@ -58,7 +57,6 @@
         }
     }
 
-    /// <summary>Devuelve el color a full de forma gradual (Dia 7 - Salida). Usa velocidadTransicion.</summary>
     public void Restaurar()
     {
         saturacionObjetivo = 1f;

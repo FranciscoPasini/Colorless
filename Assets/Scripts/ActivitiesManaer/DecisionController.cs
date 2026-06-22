@@ -6,21 +6,21 @@ public class DecisionController : MonoBehaviour
 {
     public static DecisionController Instance { get; private set; }
 
-    [Header("Config hover")]
+    [Header("Hover config")]
     public float alturaHover = 0.15f;
     public float velocidadLerp = 5f;
 
-    private Transform opcion1;     // raiz (collider/identidad): NO se mueve
+    private Transform opcion1;
     private Transform opcion2;
-    private Transform visual1;     // malla que levita
+    private Transform visual1;
     private Transform visual2;
-    private Vector3 posBase1;      // posicion base del VISUAL
+    private Vector3 posBase1;
     private Vector3 posBase2;
     private Action<int> onDecision;
 
-    private Transform bloqueada;          // opcion que NO se puede elegir (Dia 4). Puede ser null.
-    private Action onBloqueadaIntento;    // se llama al intentar elegir la bloqueada (muestra el pensamiento).
-    private bool bloqueadaUsada;          // ya se intento elegir: queda roja y fija.
+    private Transform bloqueada;
+    private Action onBloqueadaIntento;
+    private bool bloqueadaUsada;
 
     private bool activo = false;
     private Transform hovereada = null;
@@ -68,7 +68,6 @@ public class DecisionController : MonoBehaviour
         if (opcion1 != null) { DesactivarHighlight(opcion1); opcion1.gameObject.SetActive(false); }
         if (opcion2 != null) { DesactivarHighlight(opcion2); opcion2.gameObject.SetActive(false); }
 
-        // Por si el objeto bloqueado se reutiliza en otra decision: lo dejamos limpio.
         if (bloqueada != null) GetHighlight(bloqueada)?.Desbloquear();
 
         opcion1 = null;
@@ -91,12 +90,9 @@ public class DecisionController : MonoBehaviour
         return (opt != null && opt.Visual != null) ? opt.Visual : raiz;
     }
 
-    // El COLOR del hover lo maneja el PointableUnityEventWrapper (HoverOn/HoverOff).
-    // Aca solo registramos cual esta apuntada para la animacion de levitar.
     public void NotifyHover(Transform option)
     {
         if (!activo) return;
-        // La bloqueada ya usada no reacciona (queda roja y abajo).
         if (option == bloqueada && bloqueadaUsada) return;
         hovereada = option;
     }
@@ -113,11 +109,11 @@ public class DecisionController : MonoBehaviour
 
         if (option == bloqueada)
         {
-            if (bloqueadaUsada) return;        // ya bloqueada: no hace nada
+            if (bloqueadaUsada) return;
             bloqueadaUsada = true;
             hovereada = null;
-            GetHighlight(option)?.MarcarBloqueada();   // rojo + ignora hover
-            onBloqueadaIntento?.Invoke();              // muestra el pensamiento, NO avanza
+            GetHighlight(option)?.MarcarBloqueada();
+            onBloqueadaIntento?.Invoke();
             return;
         }
 
@@ -132,16 +128,15 @@ public class DecisionController : MonoBehaviour
         AnimarUna(opcion2, visual2, posBase2);
     }
 
-    // 'id' es la raiz (collider quieto, para identidad/hover); 'visual' es la malla que realmente se mueve.
     private void AnimarUna(Transform id, Transform visual, Vector3 posBase)
     {
         if (visual == null) return;
 
         Vector3 target;
         if (id == bloqueada && bloqueadaUsada)
-            target = posBase;                                  // vuelve a su lugar y se queda
+            target = posBase;
         else if (id == hovereada)
-            target = posBase + Vector3.up * alturaHover;       // levantada
+            target = posBase + Vector3.up * alturaHover;
         else
             target = posBase - Vector3.up * (alturaHover * 0.5f);
 

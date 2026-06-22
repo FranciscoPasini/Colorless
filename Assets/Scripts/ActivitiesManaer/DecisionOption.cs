@@ -2,11 +2,9 @@ using UnityEngine;
 
 public class DecisionOption : MonoBehaviour
 {
-    [Header("Animacion")]
-    [Tooltip("Malla a levitar al apuntar. Debe ser un hijo SIN el collider (el collider queda quieto para que el rayo no pierda el objeto). Vacio = busca un Renderer hijo, o usa este mismo objeto.")]
+    [Header("Animation")]
     [SerializeField] private Transform visual;
 
-    /// <summary>Transform que se mueve al levitar (la malla), no el de la raiz/collider.</summary>
     public Transform Visual
     {
         get
@@ -19,8 +17,8 @@ public class DecisionOption : MonoBehaviour
 
     public void OnHoverEnter()
     {
-        DecisionController.Instance?.NotifyHover(transform);          // levitar
-        GetComponentInChildren<InteractableHighlight>(true)?.HoverOn(); // color
+        DecisionController.Instance?.NotifyHover(transform);
+        GetComponentInChildren<InteractableHighlight>(true)?.HoverOn();
     }
 
     public void OnHoverExit()

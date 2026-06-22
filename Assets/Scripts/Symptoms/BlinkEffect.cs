@@ -1,32 +1,23 @@
 using System.Collections;
 using UnityEngine;
 
-/// <summary>
-/// Parpadeo periodico para VR (sintoma de cansancio, Dia 2). Crea un quad negro a pantalla
-/// completa frente a la camara y lo cierra/abre rapido cada cierto intervalo.
-/// Llamar Activar() desde el SymptomManager; Desactivar() para frenarlo.
-/// </summary>
 public class BlinkEffect : MonoBehaviour
 {
-    [Header("Referencias")]
-    [Tooltip("Shader Colorless/ScreenOverlay. Arrastralo desde Assets/Shaders/ScreenOverlay.shader.")]
+    [Header("References")]
     [SerializeField] private Shader shader;
-    [Tooltip("Camara a la que se engancha. Si se deja vacio usa Camera.main.")]
     [SerializeField] private Camera camara;
 
-    [Header("Apariencia")]
+    [Header("Appearance")]
     [SerializeField] private Color color = Color.black;
     [Range(0f, 1f)][SerializeField] private float opacidadMax = 1f;
 
-    [Header("Tiempos")]
-    [Tooltip("Intervalo base entre parpadeos (seg).")]
+    [Header("Timing")]
     [SerializeField] private float intervalo = 90f;
-    [Tooltip("Variacion aleatoria +/- sobre el intervalo (seg).")]
     [SerializeField] private float variacion = 15f;
     [SerializeField] private float tiempoCierre = 0.1f;
     [SerializeField] private float tiempoApertura = 0.18f;
 
-    [Header("Colocacion")]
+    [Header("Placement")]
     [SerializeField] private float distancia = 0.3f;
     [SerializeField] private float margen = 1.5f;
 
@@ -39,7 +30,6 @@ public class BlinkEffect : MonoBehaviour
         if (camara == null) camara = Camera.main;
         if (camara == null || shader == null)
         {
-            Debug.LogWarning("COLORLESS: BlinkEffect sin camara o sin shader asignado.");
             enabled = false;
             return;
         }
@@ -87,7 +77,6 @@ public class BlinkEffect : MonoBehaviour
         if (quad != null) quad.gameObject.SetActive(false);
     }
 
-    /// <summary>Dispara un parpadeo unico (util para testear o reusar en otros momentos).</summary>
     public void ParpadearUnaVez()
     {
         StartCoroutine(UnParpadeo());

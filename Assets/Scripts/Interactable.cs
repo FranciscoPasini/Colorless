@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class Interactable : MonoBehaviour
 {
-    public string hintLabel = "Interactuar";
+    public string hintLabel = "Interact";
     public UnityEvent onInteract;
 
     public void Interact()

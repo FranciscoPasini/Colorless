@@ -6,10 +6,10 @@ public class ActivityManager : MonoBehaviour
 {
     public static ActivityManager Instance { get; private set; }
 
-    [Header("Dias")]
+    [Header("Days")]
     public List<DayData> dias = new List<DayData>();
 
-    [Header("Referencias")]
+    [Header("References")]
     public LightManager lightManager;
 
     private int pasoActual;
@@ -36,13 +36,9 @@ public class ActivityManager : MonoBehaviour
     {
         int indice = dia - 1;
         if (indice < 0 || indice >= dias.Count)
-        {
-            Debug.LogWarning($"COLORLESS: No hay DayData para el día {dia}.");
             return;
-        }
         pasoActual = 0;
         diaActual = dias[indice];
-        Debug.Log($"COLORLESS: ActivityManager iniciando día {dia} con {diaActual.pasos.Count} pasos.");
 
         if (!string.IsNullOrEmpty(diaActual.eventoAlIniciar))
             SymptomManager.Instance?.Disparar(diaActual.eventoAlIniciar);
@@ -91,8 +87,6 @@ public class ActivityManager : MonoBehaviour
 
         if (go1 == null || go2 == null)
         {
-            Debug.LogWarning($"COLORLESS: No se encontraron los objetos de decisión '{pasoEnCurso.opcion1Nombre}' o '{pasoEnCurso.opcion2Nombre}'.");
-
             StartCoroutine(CompletarPaso());
             return;
         }
@@ -102,7 +96,6 @@ public class ActivityManager : MonoBehaviour
         {
             GameObject goBloq = BuscarIncluyendoInactivos(pasoEnCurso.opcionBloqueadaNombre);
             if (goBloq != null) bloqueada = goBloq.transform;
-            else Debug.LogWarning($"COLORLESS: No se encontró la opción bloqueada '{pasoEnCurso.opcionBloqueadaNombre}'.");
         }
 
         DecisionController.Instance.Activar(go1.transform, go2.transform, OnDecisionHecha,
@@ -127,9 +120,6 @@ public class ActivityManager : MonoBehaviour
 
     private void OnDecisionHecha(int indice)
     {
-        string elegida = indice == 0 ? pasoEnCurso.opcion1Nombre : pasoEnCurso.opcion2Nombre;
-        Debug.Log($"COLORLESS: Jugador eligió opción {indice + 1}: {elegida}");
-
         string eventoOpcion = indice == 0 ? pasoEnCurso.opcion1Evento : pasoEnCurso.opcion2Evento;
         if (!string.IsNullOrEmpty(eventoOpcion))
             SymptomManager.Instance?.Disparar(eventoOpcion);
@@ -181,10 +171,7 @@ public class ActivityManager : MonoBehaviour
         if (string.IsNullOrEmpty(nombre)) return null;
         GameObject go = GameObject.Find(nombre);
         if (go == null)
-        {
-            Debug.LogWarning($"COLORLESS: No se encontró el GameObject '{nombre}' en la escena.");
             return null;
-        }
         return go.GetComponent<Interactable>();
     }
 

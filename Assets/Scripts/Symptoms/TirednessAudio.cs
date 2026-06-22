@@ -1,30 +1,22 @@
 using System.Collections;
 using UnityEngine;
 
-/// <summary>
-/// Audio de cansancio (Dia 2): reproduce respiraciones profundas (intervalo corto) y
-/// bostezos (intervalo mas largo) de forma periodica y aleatoria.
-/// Los AudioClip se asignan desde el Inspector; si estan vacios no suena nada (sin error),
-/// asi se puede dejar cableado y agregar el audio mas tarde.
-/// Llamar Activar() desde el SymptomManager; Desactivar() para frenarlo.
-/// </summary>
 [RequireComponent(typeof(AudioSource))]
 public class TirednessAudio : MonoBehaviour
 {
-    [Header("Clips (asignar mas tarde)")]
+    [Header("Clips (assign later)")]
     [SerializeField] private AudioClip respiracion;
     [SerializeField] private AudioClip bostezo;
 
-    [Header("Intervalo respiracion (seg) - mas seguido")]
+    [Header("Breathing interval (sec) - more frequent")]
     [SerializeField] private float respiracionMin = 12f;
     [SerializeField] private float respiracionMax = 22f;
 
-    [Header("Intervalo bostezo (seg) - mas espaciado")]
+    [Header("Yawn interval (sec) - more spaced")]
     [SerializeField] private float bostezoMin = 40f;
     [SerializeField] private float bostezoMax = 70f;
 
     [Range(0f, 1f)][SerializeField] private float volumen = 1f;
-    [Tooltip("Reproducir una respiracion apenas se activa el cansancio.")]
     [SerializeField] private bool respirarAlIniciar = true;
 
     private AudioSource source;
@@ -35,7 +27,7 @@ public class TirednessAudio : MonoBehaviour
     {
         source = GetComponent<AudioSource>();
         source.playOnAwake = false;
-        source.spatialBlend = 0f; // 2D: son sonidos del propio jugador
+        source.spatialBlend = 0f;
     }
 
     public void Activar()
@@ -55,7 +47,6 @@ public class TirednessAudio : MonoBehaviour
         if (rutinaBost != null) { StopCoroutine(rutinaBost); rutinaBost = null; }
     }
 
-    /// <summary>Cambia el volumen de los proximos sonidos (0..1). Para el stack del Dia 5.</summary>
     public void SetVolumen(float v)
     {
         volumen = Mathf.Clamp01(v);

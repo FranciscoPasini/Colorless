@@ -3982,6 +3982,10 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2839695104446066945, guid: f27cf5f1f149bb94a8bd71f3cf084f11, type: 3}
+      propertyPath: pierdeColor
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2908573404087041401, guid: f27cf5f1f149bb94a8bd71f3cf084f11, type: 3}
       propertyPath: m_CastShadows
       value: 0
@@ -4012,7 +4016,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3353196584141528348, guid: f27cf5f1f149bb94a8bd71f3cf084f11, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3480322650264823906, guid: f27cf5f1f149bb94a8bd71f3cf084f11, type: 3}
       propertyPath: m_CastShadows
@@ -4667,9 +4671,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2942350030137030674, guid: f27cf5f1f149bb94a8bd71f3cf084f11, type: 3}
       insertIndex: -1
       addedObject: {fileID: 182078606}
-    - targetCorrespondingSourceObject: {fileID: 74953271174425824, guid: f27cf5f1f149bb94a8bd71f3cf084f11, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1100013296}
     - targetCorrespondingSourceObject: {fileID: 7297112902280128554, guid: f27cf5f1f149bb94a8bd71f3cf084f11, type: 3}
       insertIndex: -1
       addedObject: {fileID: 746848480}
@@ -4835,7 +4836,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5919627090899216965, guid: f27cf5f1f149bb94a8bd71f3cf084f11, type: 3}
   m_PrefabInstance: {fileID: 384513485}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1100013286}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b146d130bc897ef458307f28754f709c, type: 3}
@@ -16589,28 +16590,6 @@ Transform:
   - {fileID: 1080274318}
   m_Father: {fileID: 1416067643}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1100013286 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 74953271174425824, guid: f27cf5f1f149bb94a8bd71f3cf084f11, type: 3}
-  m_PrefabInstance: {fileID: 384513485}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1100013296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1100013286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1b39559e35c4004e8031f27957b8304, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colorPropio: {r: 1, g: 1, b: 1, a: 1}
-  pierdeColor: 1
-  diaInicio: 1
-  diaFinal: 7
-  velocidadTransicion: 0.5
 --- !u!1 &1107285581
 GameObject:
   m_ObjectHideFlags: 0

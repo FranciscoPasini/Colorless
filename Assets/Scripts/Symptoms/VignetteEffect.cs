@@ -1,29 +1,19 @@
 using UnityEngine;
 
-/// <summary>
-/// Vinieta de "enfoque" para VR. Crea un quad frente a la camara con un shader radial
-/// (bordes oscuros, centro transparente) y anima su intensidad suavemente.
-/// Sintoma del Dia 1. Llamar SetIntensidad(0..1) desde el SymptomManager.
-/// </summary>
 public class VignetteEffect : MonoBehaviour
 {
-    [Header("Referencias")]
-    [Tooltip("Shader Colorless/Vignette. Arrastralo desde Assets/Shaders/Vignette.shader.")]
+    [Header("References")]
     [SerializeField] private Shader shader;
-    [Tooltip("Camara a la que se engancha. Si se deja vacio usa Camera.main.")]
     [SerializeField] private Camera camara;
 
-    [Header("Apariencia")]
+    [Header("Appearance")]
     [SerializeField] private Color color = Color.black;
     [Range(0f, 1f)][SerializeField] private float radio = 0.35f;
     [Range(0.001f, 1f)][SerializeField] private float suavidad = 0.35f;
 
-    [Header("Colocacion / animacion")]
-    [Tooltip("Distancia del quad a la camara (debe ser mayor al near clip).")]
+    [Header("Placement / animation")]
     [SerializeField] private float distancia = 0.3f;
-    [Tooltip("Margen extra del quad para cubrir el FOV completo en ambos ojos.")]
     [SerializeField] private float margen = 1.4f;
-    [Tooltip("Velocidad de transicion de la intensidad.")]
     [SerializeField] private float velocidad = 2f;
 
     private Material instancia;
@@ -38,7 +28,6 @@ public class VignetteEffect : MonoBehaviour
         if (camara == null) camara = Camera.main;
         if (camara == null || shader == null)
         {
-            Debug.LogWarning("COLORLESS: VignetteEffect sin camara o sin shader asignado.");
             enabled = false;
             return;
         }
@@ -75,13 +64,11 @@ public class VignetteEffect : MonoBehaviour
         mr.receiveShadows = false;
     }
 
-    /// <summary>Setea la intensidad objetivo (0 = sin vinieta, 1 = maxima). Llamado por el SymptomManager.</summary>
     public void SetIntensidad(float valor)
     {
         intensidadObjetivo = Mathf.Clamp01(valor);
     }
 
-    /// <summary>Setea el radio objetivo (mas chico = mas cerrada / tunel). Para el stack del Dia 5.</summary>
     public void SetRadio(float valor)
     {
         radioObjetivo = Mathf.Clamp01(valor);

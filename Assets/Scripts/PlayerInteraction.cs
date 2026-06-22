@@ -7,7 +7,7 @@ public class PlayerInteraction : MonoBehaviour
     public float interactRange = 3f;
     public KeyCode interactKey = KeyCode.E;
 
-    [Header("UI (opcional)")]
+    [Header("UI (optional)")]
     public TextMeshProUGUI hintText;
 
     private Interactable currentTarget;

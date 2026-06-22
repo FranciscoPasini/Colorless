@@ -10,6 +10,8 @@ public class ThoughtDisplay : MonoBehaviour
 
     [Header("Referencia")]
     [SerializeField] private TMP_Text textoDisplay;
+    [Tooltip("Panel/canvas a mostrar mientras hay texto. Si se deja vacio se usa el GameObject del textoDisplay. NO debe ser este mismo GameObject.")]
+    [SerializeField] private GameObject panel;
 
     [Header("Config")]
     [SerializeField] private float delayPorCaracter = 0.04f;
@@ -21,7 +23,14 @@ public class ThoughtDisplay : MonoBehaviour
     {
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
+        if (panel == null && textoDisplay != null) panel = textoDisplay.gameObject;
         if (textoDisplay != null) textoDisplay.text = "";
+        SetVisible(false);
+    }
+
+    private void SetVisible(bool visible)
+    {
+        if (panel != null && panel != gameObject) panel.SetActive(visible);
     }
 
     public void MostrarPensamiento(string texto, Action alTerminar = null, float ocultarDespuesDe = -1f)
@@ -32,6 +41,7 @@ public class ThoughtDisplay : MonoBehaviour
             return;
         }
         if (coroutineActual != null) StopCoroutine(coroutineActual);
+        SetVisible(true);
         float delay = ocultarDespuesDe >= 0f ? ocultarDespuesDe : tiempoAutoOcultar;
         coroutineActual = StartCoroutine(RutinaTypewriter(texto, delay, alTerminar));
     }
@@ -40,6 +50,7 @@ public class ThoughtDisplay : MonoBehaviour
     {
         if (coroutineActual != null) { StopCoroutine(coroutineActual); coroutineActual = null; }
         if (textoDisplay != null) textoDisplay.text = "";
+        SetVisible(false);
     }
 
     private IEnumerator RutinaTypewriter(string texto, float tiempoOcultar, Action alTerminar)
@@ -55,7 +66,9 @@ public class ThoughtDisplay : MonoBehaviour
         {
             yield return new WaitForSeconds(tiempoOcultar);
             textoDisplay.text = "";
+            SetVisible(false);
         }
+        coroutineActual = null;
     }
 
     [ContextMenu("TEST - Mostrar pensamiento")]

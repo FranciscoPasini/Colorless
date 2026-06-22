@@ -42,6 +42,9 @@ public class DecisionController : MonoBehaviour
 
         op1.gameObject.SetActive(true);
         op2.gameObject.SetActive(true);
+
+        ActivarHighlight(op1);
+        ActivarHighlight(op2);
     }
 
     public void Desactivar()
@@ -49,11 +52,21 @@ public class DecisionController : MonoBehaviour
         activo = false;
         hovereada = null;
 
-        if (opcion1 != null) opcion1.gameObject.SetActive(false);
-        if (opcion2 != null) opcion2.gameObject.SetActive(false);
+        if (opcion1 != null) { DesactivarHighlight(opcion1); opcion1.gameObject.SetActive(false); }
+        if (opcion2 != null) { DesactivarHighlight(opcion2); opcion2.gameObject.SetActive(false); }
 
         opcion1 = null;
         opcion2 = null;
+    }
+
+    private void ActivarHighlight(Transform target)
+    {
+        target.GetComponentInChildren<InteractableHighlight>(true)?.Activar();
+    }
+
+    private void DesactivarHighlight(Transform target)
+    {
+        target.GetComponentInChildren<InteractableHighlight>(true)?.Desactivar();
     }
 
     public void NotifyHover(Transform option)

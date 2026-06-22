@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: Day1
   m_EditorClassIdentifier: 
   pasos:
-  - pensamiento: Tengo que comer algo...
-    nombreInteractable: cabnet
+  - pensamiento: Bueno, mi primer dia en el trabajo, deberia desayunar algo...
+    nombreInteractable: bowl
     avanzarHoraA: -1
     esDormir: 0
     esDecision: 0
     opcion1Nombre: 
     opcion2Nombre: 
-  - pensamiento: 
+  - pensamiento: Mmm, cual elijo?
     nombreInteractable: 
     avanzarHoraA: -1
     esDormir: 0

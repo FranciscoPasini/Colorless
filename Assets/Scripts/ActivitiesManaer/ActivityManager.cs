@@ -164,11 +164,11 @@ public class ActivityManager : MonoBehaviour
 
     private void ActivarHighlight(Interactable target)
     {
-        target?.GetComponent<InteractableHighlight>()?.Activar();
+        target?.GetComponentInChildren<InteractableHighlight>(true)?.Activar();
     }
 
     private void DesactivarHighlight(Interactable target)
     {
-        target?.GetComponent<InteractableHighlight>()?.Desactivar();
+        target?.GetComponentInChildren<InteractableHighlight>(true)?.Desactivar();
     }
 }

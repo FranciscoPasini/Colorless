@@ -39,7 +39,7 @@ MonoBehaviour:
     pensamientoBloqueada: No, mejor vamos a comer algo sano para el primer dia.
     eventoAlCompletar: 
   - pensamiento: Listo, deberia  ponerme a trabajar ahora...
-    nombreInteractable: book.05
+    nombreInteractable: Tablet
     avanzarHoraA: 22
     esDormir: 0
     esDecision: 0

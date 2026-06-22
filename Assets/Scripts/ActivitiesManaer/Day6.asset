@@ -39,7 +39,7 @@ MonoBehaviour:
     pensamientoBloqueada: No hay forma...
     eventoAlCompletar: 
   - pensamiento: Ojala todo terminara...
-    nombreInteractable: book.05
+    nombreInteractable: Tablet
     avanzarHoraA: 3
     esDormir: 0
     esDecision: 0

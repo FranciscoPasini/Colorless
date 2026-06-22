@@ -15,7 +15,7 @@ MonoBehaviour:
   eventoAlIniciar: 
   pasos:
   - pensamiento: Quiero renunciar ya esta...
-    nombreInteractable: book.05
+    nombreInteractable: Tablet
     avanzarHoraA: -1
     esDormir: 0
     esDecision: 0

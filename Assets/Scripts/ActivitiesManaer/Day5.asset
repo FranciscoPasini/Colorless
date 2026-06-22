@@ -39,7 +39,7 @@ MonoBehaviour:
     pensamientoBloqueada: No
     eventoAlCompletar: 
   - pensamiento: Unas ganas de revolear eso...
-    nombreInteractable: book.05
+    nombreInteractable: Tablet
     avanzarHoraA: 3
     esDormir: 0
     esDecision: 0

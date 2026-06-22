@@ -9,6 +9,7 @@ public class MainMenuManager : MonoBehaviour
     public GameObject clock;
     public GameObject activitymanager;
     public GameObject canvas2;
+    public GameObject tablet;
 
     public void PlayButton()
     {
@@ -18,6 +19,7 @@ public class MainMenuManager : MonoBehaviour
         daymanager.SetActive(true);
         clock.SetActive(true);
         activitymanager.SetActive(true);
+        tablet.SetActive(true);
 
         canvas2.SetActive(false);
     }

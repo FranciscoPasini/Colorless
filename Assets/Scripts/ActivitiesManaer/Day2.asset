@@ -22,6 +22,10 @@ MonoBehaviour:
     esDecision: 0
     opcion1Nombre: 
     opcion2Nombre: 
+    opcion1Evento: 
+    opcion2Evento: 
+    opcionBloqueadaNombre: 
+    pensamientoBloqueada: 
     eventoAlCompletar: 
   - pensamiento: Nose si tengo tiempo de cocinar algo...
     nombreInteractable: 
@@ -30,14 +34,22 @@ MonoBehaviour:
     esDecision: 1
     opcion1Nombre: ComidaSana
     opcion2Nombre: ComidaChatarra
+    opcion1Evento: 
+    opcion2Evento: 
+    opcionBloqueadaNombre: 
+    pensamientoBloqueada: 
     eventoAlCompletar: 
   - pensamiento: Bueno, otra vez
-    nombreInteractable: book.05
+    nombreInteractable: Tablet
     avanzarHoraA: 24
     esDormir: 0
     esDecision: 0
     opcion1Nombre: 
     opcion2Nombre: 
+    opcion1Evento: 
+    opcion2Evento: 
+    opcionBloqueadaNombre: 
+    pensamientoBloqueada: 
     eventoAlCompletar: 
   - pensamiento: Mira a la hora que termino, me voy a dormir...
     nombreInteractable: "yellow accord\xE9on"
@@ -46,4 +58,8 @@ MonoBehaviour:
     esDecision: 0
     opcion1Nombre: 
     opcion2Nombre: 
+    opcion1Evento: 
+    opcion2Evento: 
+    opcionBloqueadaNombre: 
+    pensamientoBloqueada: 
     eventoAlCompletar: 

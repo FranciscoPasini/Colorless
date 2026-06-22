@@ -39,7 +39,7 @@ MonoBehaviour:
     pensamientoBloqueada: No, no tengo tiempo...
     eventoAlCompletar: 
   - pensamiento: Vivo en un loop...
-    nombreInteractable: book.05
+    nombreInteractable: Tablet
     avanzarHoraA: 2
     esDormir: 0
     esDecision: 0

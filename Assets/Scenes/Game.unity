@@ -207,6 +207,258 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1855884911}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &68660199
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 68660202}
+  - component: {fileID: 68660201}
+  - component: {fileID: 68660205}
+  - component: {fileID: 68660204}
+  - component: {fileID: 68660200}
+  - component: {fileID: 68660203}
+  m_Layer: 0
+  m_Name: SymptomsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &68660200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68660199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd756d02688873f4ea26a9018d7f67a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sintomas:
+  - clave: Enfoque
+    accion:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 68660201}
+          m_TargetAssemblyTypeName: VignetteEffect, Assembly-CSharp
+          m_MethodName: SetIntensidad
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0.4
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - clave: Cansancio
+    accion:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 68660205}
+          m_TargetAssemblyTypeName: BlinkEffect, Assembly-CSharp
+          m_MethodName: Activar
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0.4
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 68660204}
+          m_TargetAssemblyTypeName: TirednessAudio, Assembly-CSharp
+          m_MethodName: Activar
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0.4
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &68660201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68660199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7517e390dba10d4fa3d04d88b2352b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 4800000, guid: 32d01b414eda1fe4ab373fc0b70bd87d, type: 3}
+  camara: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 1}
+  radio: 0.35
+  suavidad: 0.35
+  distancia: 0.3
+  margen: 1.4
+  velocidad: 2
+--- !u!4 &68660202
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68660199}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.205723, y: -3.808, z: 0.52976674}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &68660203
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68660199}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &68660204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68660199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f724e38cfbe4d6242b6720ff94554d77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respiracion: {fileID: 0}
+  bostezo: {fileID: 0}
+  respiracionMin: 12
+  respiracionMax: 22
+  bostezoMin: 40
+  bostezoMax: 70
+  volumen: 0.713
+  respirarAlIniciar: 1
+--- !u!114 &68660205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68660199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0db9f846b43c52c418bf1427fe45278d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 4800000, guid: 3b1412a20dade95488755c74e00c5f79, type: 3}
+  camara: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 1}
+  opacidadMax: 1
+  intervalo: 90
+  variacion: 15
+  tiempoCierre: 0.1
+  tiempoApertura: 0.18
+  distancia: 0.3
+  margen: 1.5
 --- !u!1 &69185607
 GameObject:
   m_ObjectHideFlags: 0
@@ -15012,8 +15264,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.0947, y: -0.457}
-  m_SizeDelta: {x: 810.5275, y: 150}
+  m_AnchoredPosition: {x: -0.1274, y: -0.457}
+  m_SizeDelta: {x: 1048.2292, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1365677480
 MonoBehaviour:
@@ -19717,6 +19969,14 @@ PrefabInstance:
       propertyPath: lightManager
       value: 
       objectReference: {fileID: 705507996}
+    - target: {fileID: 6849485081039388021, guid: 2b957714e9966724ea766bbf59787e2e, type: 3}
+      propertyPath: dias.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6849485081039388021, guid: 2b957714e9966724ea766bbf59787e2e, type: 3}
+      propertyPath: 'dias.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 80d4e154ef1f4874f88061946dcb008f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19966,3 +20226,4 @@ SceneRoots:
   - {fileID: 375664608}
   - {fileID: 1868757617}
   - {fileID: 1157790565}
+  - {fileID: 68660202}

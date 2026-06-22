@@ -24,4 +24,8 @@ public class ActivityStep
     public string opcion1Nombre;
     [Tooltip("Nombre exacto del GameObject opcion 2 en la escena (ej: PolloEnsalada)")]
     public string opcion2Nombre;
+
+    [Header("Sintoma / Evento")]
+    [Tooltip("Clave del sintoma a disparar al completar este paso. Debe coincidir con una clave del SymptomManager (ej: Enfoque). Vacio = nada.")]
+    public string eventoAlCompletar;
 }

@@ -43,6 +43,10 @@ public class ActivityManager : MonoBehaviour
         pasoActual = 0;
         diaActual = dias[indice];
         Debug.Log($"COLORLESS: ActivityManager iniciando día {dia} con {diaActual.pasos.Count} pasos.");
+
+        if (!string.IsNullOrEmpty(diaActual.eventoAlIniciar))
+            SymptomManager.Instance?.Disparar(diaActual.eventoAlIniciar);
+
         EjecutarPasoActual();
     }
 
@@ -145,6 +149,9 @@ public class ActivityManager : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             yield return StartCoroutine(ScreenFade.Instance.FadeIn());
         }
+
+        if (!string.IsNullOrEmpty(pasoEnCurso.eventoAlCompletar))
+            SymptomManager.Instance?.Disparar(pasoEnCurso.eventoAlCompletar);
 
         pasoActual++;
         EjecutarPasoActual();

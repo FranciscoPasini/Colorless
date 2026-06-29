@@ -17320,14 +17320,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1578886911670047163, guid: 58a334a590aad8e4db16efbd478ad19b, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2169608908041594375, guid: 58a334a590aad8e4db16efbd478ad19b, type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4973310562325044108, guid: 58a334a590aad8e4db16efbd478ad19b, type: 3}
       propertyPath: clock
       value: 
@@ -17356,21 +17348,9 @@ PrefabInstance:
       propertyPath: activitymanager
       value: 
       objectReference: {fileID: 669675299}
-    - target: {fileID: 4978899956589951364, guid: 58a334a590aad8e4db16efbd478ad19b, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4983873975197516926, guid: 58a334a590aad8e4db16efbd478ad19b, type: 3}
-      propertyPath: m_RaycastTarget
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5387327339680237195, guid: 58a334a590aad8e4db16efbd478ad19b, type: 3}
       propertyPath: m_Name
       value: CanvasMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 9101858621508333780, guid: 58a334a590aad8e4db16efbd478ad19b, type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9105487525725187640, guid: 58a334a590aad8e4db16efbd478ad19b, type: 3}
       propertyPath: m_Pivot.x

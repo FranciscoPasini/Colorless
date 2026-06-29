@@ -2669,6 +2669,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _monoscopic: 0
   _sharpenType: 0
+  _disableRecording: 0
   _enableDynamicResolution: 1
   minDynamicResolutionScale: 1
   maxDynamicResolutionScale: 1
@@ -2719,16 +2720,16 @@ MonoBehaviour:
   virtualGreenScreenDepthTolerance: 0.2
   mrcActivationMode: 0
   launchSimultaneousHandsControllersOnStartup: 0
-  isInsightPassthroughEnabled: 1
+  isInsightPassthroughEnabled: 0
   shouldBoundaryVisibilityBeSuppressed: 0
   requestBodyTrackingPermissionOnStartup: 0
   requestFaceTrackingPermissionOnStartup: 0
   requestEyeTrackingPermissionOnStartup: 0
-  requestScenePermissionOnStartup: 1
+  requestScenePermissionOnStartup: 0
   requestRecordAudioPermissionOnStartup: 0
   requestPassthroughCameraAccessPermissionOnStartup: 0
   _localDimming: 1
-  _trackingOriginType: 1
+  _trackingOriginType: 0
   usePositionTracking: 1
   useRotationTracking: 1
   useIPDInPositionTracking: 1
@@ -2740,6 +2741,10 @@ MonoBehaviour:
   SimultaneousHandsAndControllersEnabled: 0
   _readOnlyWideMotionModeHandPosesEnabled: 0
   wideMotionModeHandPosesEnabled: 0
+  _readOnlyFastMotionModeHandPosesEnabled: 0
+  fastMotionModeHandPosesEnabled: 0
+  _readOnlyWideMotionMode2HandPosesEnabled: 0
+  wideMotionMode2HandPosesEnabled: 0
   dynamicResolutionVersion: 1
 --- !u!114 &272193982
 MonoBehaviour:
